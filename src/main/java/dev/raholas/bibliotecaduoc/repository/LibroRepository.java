@@ -83,8 +83,7 @@ public class LibroRepository {
 
         }
 
-
-
+        /*
         // alternativa 2
         int idPoscicion=0;
         for (int i =  0; i < listaLibros.size(); i++) {
@@ -101,7 +100,7 @@ public class LibroRepository {
 
 
         //otra alternativa
-        listaLibros.removeIf(x -> x.getId()==id );
+        listaLibros.removeIf(x -> x.getId()==id ); */
 
     }
 
