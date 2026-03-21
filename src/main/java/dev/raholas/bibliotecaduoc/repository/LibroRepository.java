@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.ListResourceBundle;
 
 @Repository
 public class LibroRepository {
@@ -122,6 +123,29 @@ public class LibroRepository {
 
     public int totalLibros(){
         return listaLibros.size();
+    }
+
+
+    public List<Libro> buscarPorAnio(int anio){
+        List<Libro> listaAnioLibro = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            if (libro.getFechaPublicacion()==anio){
+                listaAnioLibro.add(libro);
+            }
+        }
+        return listaAnioLibro;
+
+    }
+
+    public List<Libro> buscarPorAutor(String autor){
+        List<Libro> listaAutorLibro = new ArrayList<>();
+        for (Libro libro : listaLibros) {
+            //el replace va en los 2 lados para que separe tanto lo de la base de datos como lo que introduce el usuario
+            if(libro.getAutor().replace(" ","").equalsIgnoreCase(autor.replace(" ","")) ){
+                listaAutorLibro.add(libro);
+            }
+        }
+        return listaAutorLibro;
     }
 
 

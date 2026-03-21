@@ -5,6 +5,7 @@ import dev.raholas.bibliotecaduoc.repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @Service
@@ -42,6 +43,19 @@ public class LibroService {
 
     public int totalLibrosV2(){
         return  libroRepository.totalLibros();
+    }
+
+    public Libro getLibroIsbn(String isbn){
+        return libroRepository.buscarPorIsbn(isbn);
+
+    }
+
+    public List<Libro> getLibroYear(int anio){
+        return libroRepository.buscarPorAnio(anio);
+    }
+
+    public List<Libro> getLibroAuthor(String autor){
+        return libroRepository.buscarPorAutor(autor);
     }
 
 }

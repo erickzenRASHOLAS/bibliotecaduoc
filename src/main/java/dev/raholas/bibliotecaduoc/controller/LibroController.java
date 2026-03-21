@@ -29,7 +29,7 @@ public class LibroController {
 
     //es importante el ("{id}") para evitar el amiggous mapping
     //es decir que para que se pueda distinguir entre los metodos
-    @GetMapping ("{id}") //@PathVariable parece almacenar el
+    @GetMapping ("/search/id/{id}") //@PathVariable parece almacenar el
     public Libro buscarLibro(@PathVariable int id){
         return libroService.getLibroId(id);
     }
@@ -54,5 +54,19 @@ public class LibroController {
         return libroService.totalLibrosV2();
     }
 
+    @GetMapping ("/search/isbn/{isbn}")
+    public Libro buscarLibroIsbn(@PathVariable String isbn){
+        return libroService.getLibroIsbn(isbn);
+    }
+
+    @GetMapping ("/search/year/{anio}")
+    public List<Libro> buscarLibroAnio(@PathVariable int anio){
+        return libroService.getLibroYear(anio);
+    }
+
+    @GetMapping ("/search/author/{autor}")
+    public List<Libro> buscarLibroAutor(@PathVariable String autor){
+        return libroService.getLibroAuthor(autor);
+    }
 
 }
