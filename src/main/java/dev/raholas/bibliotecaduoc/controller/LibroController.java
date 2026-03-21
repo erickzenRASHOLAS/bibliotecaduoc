@@ -10,7 +10,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/libros")
-
 public class LibroController {
 
     @Autowired
@@ -46,7 +45,13 @@ public class LibroController {
 
     @DeleteMapping("{id}")
     public String eliminarLibro(@PathVariable int id){
+
         return libroService.deleteLibro(id);
+    }
+
+    @GetMapping("/total")
+    public int totalLibrosV2(){
+        return libroService.totalLibrosV2();
     }
 
 

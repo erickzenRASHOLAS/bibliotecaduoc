@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-
 public class LibroService {
 
     @Autowired
@@ -33,8 +32,16 @@ public class LibroService {
 
     public String deleteLibro(int id){
         libroRepository.eliminar(id);
-        return "! Libro ELIMINADO Con Éxito¡";
+        return "! Libro ELIMINADO Con Éxito ¡";
 
+    }
+
+    public int totalLibros(){
+        return libroRepository.obtenerLibros().size();
+    }
+
+    public int totalLibrosV2(){
+        return  libroRepository.totalLibros();
     }
 
 }
