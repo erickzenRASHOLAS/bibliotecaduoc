@@ -69,4 +69,19 @@ public class LibroController {
         return libroService.getLibroAuthor(autor);
     }
 
+    @GetMapping("/search/oldest")
+    public Libro buscarMasAntiguo(){
+        return libroService.getLibroOldest();
+    }
+
+    @GetMapping("/search/newest")
+    public Libro buscarMasNuevo(){
+        return libroService.getLibroNewest();
+    }
+
+    @GetMapping("/search/published")
+    public List<Libro> buscarOrdenPublicacion(){
+        return libroService.getLibroPublished();
+    }
+
 }

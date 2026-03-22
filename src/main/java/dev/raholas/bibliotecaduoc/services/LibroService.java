@@ -58,4 +58,16 @@ public class LibroService {
         return libroRepository.buscarPorAutor(autor);
     }
 
+    public Libro getLibroOldest(){
+        return libroRepository.buscarMasAntiguo();
+    }
+
+    public Libro getLibroNewest(){
+        return libroRepository.buscarMasNuevo();
+    }
+
+    public List<Libro> getLibroPublished(){
+        return libroRepository.buscarOrdenPublicacion();
+    }
+
 }

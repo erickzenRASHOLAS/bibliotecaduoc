@@ -4,6 +4,7 @@ import dev.raholas.bibliotecaduoc.model.Libro;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.ListResourceBundle;
 
@@ -148,5 +149,38 @@ public class LibroRepository {
         return listaAutorLibro;
     }
 
+    public Libro buscarMasAntiguo(){
+        Libro libroMasAntiguo=listaLibros.get(0);
+        for (Libro libro: listaLibros){
+            if(libro.getFechaPublicacion() < libroMasAntiguo.getFechaPublicacion()){
+                libroMasAntiguo=libro;
+            }
+        }
+        return libroMasAntiguo;
+    }
+
+    public Libro buscarMasNuevo(){
+        Libro libroMasNuevo=listaLibros.get(0);
+        for (Libro libro: listaLibros){
+            if(libro.getFechaPublicacion() > libroMasNuevo.getFechaPublicacion()){
+                libroMasNuevo=libro;
+            }
+        }
+        return libroMasNuevo;
+    }
+
+
+    public List<Libro> buscarOrdenPublicacion(){
+        /// Creamos la lista para no modificar la lista orignal
+        List<Libro> listaOrdenPublicacion = new ArrayList<>();
+        for (Libro libro : listaLibros){
+            listaOrdenPublicacion.add(libro);
+        } /// el orden naturar es de menos a mas (cronologico)
+        ///  de desearse el orden inverso se debe utilizar .reversed()
+        /// .sort() los ordena y Comparator.comparingInt los Compara/Ordena segun un integer en este caso
+        /// Luego se debe agregar el objeto que usaremos y el metodo el cual se ordenaran
+        listaOrdenPublicacion.sort(Comparator.comparingInt(Libro::getFechaPublicacion));
+        return listaOrdenPublicacion;
+    }
 
 }
