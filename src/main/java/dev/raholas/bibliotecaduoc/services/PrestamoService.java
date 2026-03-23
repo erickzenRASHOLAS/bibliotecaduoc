@@ -50,4 +50,21 @@ public class PrestamoService {
         }
     }
 
+    public Prestamo updatePrestamo(Prestamo prestamo){
+        var libro= libroRepository.buscarPorId(prestamo.getIdLibro());
+        if(libro != null){
+            return prestamoRepository.actualizarPrestamo(prestamo);
+        }else{
+            throw new RuntimeException("¡¡¡ ERROR !!! El idLibro: "+ prestamo.getIdLibro() +" de la actualización al prestamo NO existe");
+        }
+
+    }
+
+    public String deletePrestamo(int id){
+        prestamoRepository.eliminarPrestamo(id);
+        return "¡¡ Prestamo ELIMINADO con ÉXITO";
+    }
+
+
+
 }

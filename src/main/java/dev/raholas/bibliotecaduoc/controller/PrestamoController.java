@@ -25,12 +25,30 @@ public class PrestamoController {
         return prestamoService.getPrestamo();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/search/id/{id}")
     private Prestamo buscarPrestamoId(@PathVariable int id){
         return prestamoService.getPrestamoId(id);
     }
 
+    @GetMapping("/search/idbook/{idLibro}")
+    private List<Prestamo> buscarPrestamoIdLibro(@PathVariable int idLibro){
+        return  prestamoService.getPrestamoIdLibro(idLibro);
+    }
 
+    @GetMapping("/search/run/{runSolicitante}") /// se debe poner el nombre de la variable
+                                                  /// en el @GetMapping y @PathVariable
+    private List<Prestamo> buscarPrestamoRun(@PathVariable String runSolicitante){
+        return prestamoService.getPrestamoRun(runSolicitante);
+    }
 
+    @PutMapping("{id}")
+    private Prestamo actualizarPrestamo(@PathVariable int id,@RequestBody Prestamo prestamo){
+        return prestamoService.updatePrestamo(prestamo);
+    }
+
+    @DeleteMapping("{id}")
+    private String eliminarPrestamo(@PathVariable int id){
+        return prestamoService.deletePrestamo(id);
+    }
 
 }

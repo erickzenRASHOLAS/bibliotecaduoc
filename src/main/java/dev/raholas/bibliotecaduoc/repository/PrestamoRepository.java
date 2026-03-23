@@ -40,6 +40,7 @@ public class PrestamoRepository {
 
     /// Buscar por Run
     /// Encontre este codigo en internet
+    /// Es una lista porque el run puede tener mas de un Prestamo
     // el ^ indica que (T)ODO lo que NO Este en los corchetes sera reemplazado
     ///  no se puede poner "tod o" junto
     public List<Prestamo> buscarPrestamoRun(String run){
@@ -80,6 +81,15 @@ public class PrestamoRepository {
         listaPrestamos.set(idPosicion, prestamoN);
         return prestamoN;
 
+    }
+
+    public void eliminarPrestamo(int id){
+        for(Prestamo prestamo: listaPrestamos){
+            if(prestamo.getIdPrestamo() == id){
+                listaPrestamos.remove(prestamo);
+                break;
+            }
+        }
     }
 
 
